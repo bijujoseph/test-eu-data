@@ -4,7 +4,7 @@ Obtaining EUC zipcode crosswalk is a 4 stage process:
 1. Create a file containing county names and state from EUC policy (`euc_counties.csv`). 
 2. Enrich each county with FIPS code. This information is obtained from National Counties from [Census.gov](https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html) and by matching the county and state. 
 3. Enrich each county with zipcodes. This information is obtained from the [HUD USPS ZIP CODE CROSSWALK](https://www.huduser.gov/portal/datasets/usps_crosswalk.html#data) 
-4. Publish the EUC-zipcode crosswalk. This information will be stored in `data/<year>/euc_county_zipcode_crosswalk.[csv|json]` files.  
+4. Publish the EUC-zipcode crosswalk. This information will be stored in `data/<year>/euc_county_zipcode_crosswalk.csv` file.  
 
 The scripts that automate parts of the above workflow will reside in `processors` package. The lookup files we use while processing and intermediate files generated gets stored in `staging` folder for later references and quality checks. 
 
@@ -22,6 +22,12 @@ This is the actual policy file downloaded from QPP resource library. It is check
 ### euc_counties.csv 
 It is cumbersome to parse the fact sheet PDF file. So, to begin with we will manually create a CSV file with state and county names. 
 The example is from `2021\euc_counties.csv` which shows the structure :-
+|state_code|county_name|zipcode|
+|----------|-----------|-------|
+|KY        |clay       |40951  |
+|KY        |clay       |40944  |
+|KY        |clay       |40741  |
+|KY        |clay       |40932  |
 
 ### Census.gov Counties file
 This file contains the county and its Federal Information Processing Standard (FIPS) code mapping. The file is available under "Counties" section within [Gazetteer Files](https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html). Example, Gaz_counties_national.txt: [2021_Gaz_counties_national.zip](https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2021_Gazetteer/2021_Gaz_counties_national.zip) 
@@ -37,4 +43,4 @@ The column definitions are:
 
 
 ### euc_counties_zip_crosswalk.csv 
-This file contains the counties identified in EUC along with the zip codes. 
+This file in `data` folder contains the counties identified in EUC along with zipcodes. 

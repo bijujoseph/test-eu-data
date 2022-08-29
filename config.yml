@@ -1,13 +1,13 @@
 scanner:
   repository_path: bijujoseph/test-eu-data
   issue_label: euc_policy_change
-staging_folder: staging
+staging:
+  folder: staging
 data:
-  json_filename: euc_county_zipcode_crosswalk.json
-  csv_filename: euc_county_zipcode_crosswalk.csv
-
+  folder: data
+  filename: euc_county_zipcode_crosswalk.csv
 generator:
-  2022:
+  '2022':
     qpp_euc_policy:
       filename: 2022 MIPS Automatic EUC Policy Fact Sheet.pdf
       format: pdf

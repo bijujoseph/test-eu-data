@@ -1,5 +1,4 @@
 import os
-import shutil
 from pathlib import Path
 
 import yaml
@@ -38,33 +37,5 @@ class FileUtils:
         return cls.get_root().joinpath(folder)
 
     @classmethod
-    def rmdir(cls, path):
-        shutil.rmtree(path, ignore_errors=True)
-
-    @classmethod
     def mkdirs(cls, path):
         Path(path).mkdir(parents=True, exist_ok=True)
-
-    @classmethod
-    def read_file(cls, file_name):
-        with open(file_name, 'r') as f:
-            content = f.read()
-        return content
-
-    @classmethod
-    def write_file(cls, file_name, content, mode="w"):
-        with open(file_name, mode) as f:
-            f.write(content)
-        return file_name
-
-    @classmethod
-    def delete_file(cls, file_name):
-        Path(file_name).unlink()
-
-    @classmethod
-    def list(cls, folder, ext="*.json"):
-        return list(Path(folder).rglob(ext))
-
-    @classmethod
-    def copy(cls, src, dest, mode="w"):
-        cls.write_file(dest, cls.read_file(src), mode)
